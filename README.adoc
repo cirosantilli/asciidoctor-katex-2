@@ -77,6 +77,16 @@ Why this is better than:
 * AsciiMath: not LaTeX syntax, so larger learning curve and less functionality
 * https://github.com/asciidoctor/asciidoctor-mathematical uses https://github.com/gjtorikian/mathematical which converts equations into "SVGs, PNGs, or MathML", so either clunky images that have to be uploaded, or MathML which has low support. KaTeX uses just plain HTML and CSS!
 
+== Why?
+
+The dark days of the LaTeX + PDF Empire are counted.
+
+A revolution is coming, in which all people of the world will write their free books, publications and documentation in human readable markup formats that can be converted to HTML.
+
+Proper HTML Mathematics has long been, the final frontier, but it is now upon us.
+
+Join the revolution.
+
 == TODO
 
 Things already work, but there are two major annoyances that need solving before True Enlightenment:
