@@ -1,0 +1,51 @@
+:katex-font-size: 1.5em
+:katex-version: 0.10.2
+
+Inline katex:[\sqrt{1+1}] katex
+
+Block one-liner:
+
+katex::[\sqrt{1+1}]
+
+Block multi-liner with a caption and xref to it: xref:math-test-math[] (TODO add `Equation 1)` prefix to both caption and xref):
+
+[katex,id=math-test-math]
+.A test block equation
+[katex]
+....
+\sqrt{1+1} \\
+\sqrt{1+1}
+....
+
+Define and use `\gdef` in another block:
+
+[katex]
+....
+\gdef\myGdefMacro#1#2{my \ #1 \ gdef \ #2 \ macro}
+....
+
+[katex]
+....
+\myGdefMacro{asdf}{qwer}
+....
+
+Define and use `\newcommand` in another block (TODO not working):
+
+.....
+[katex]
+....
+\newcommand\{myNewcommandmacro}[2]{my \ #1 \ newcommand \ #2 \ macro}
+....
+
+[katex]
+....
+\myNewcommandmacro{asdf}{qwer}
+....
+.....
+
+Macro defined with JavaScript API:
+
+[katex]
+....
+\cirosantilliApiMacro{asdf}{qwer}
+....

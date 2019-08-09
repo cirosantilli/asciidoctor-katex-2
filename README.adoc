@@ -1,0 +1,94 @@
+= Asciidoctor KaTeX 2
+:idprefix:
+:idseparator: -
+:nofooter:
+:sectanchors:
+:sectlinks:
+:sectnumlevels: 6
+:sectnums:
+:toc-title:
+:toc: macro
+:toclevels: 6
+
+Asciidoctor extension to render KaTeX mathematics server side to HTML fast with https://github.com/Shopify/schmooze[Schmooze]. The Nirvana of Math for the web.
+
+toc::[]
+
+== Usage
+
+Install NPM explained at: https://askubuntu.com/questions/594656/how-to-install-the-latest-versions-of-nodejs-and-npm/971612#971612
+
+Then install the KaTeX Node.js module:
+
+....
+npm install katex@0.10.2
+....
+
+And finally install this extension and use it on our test document link:test.adoc[]:
+
+....
+asciidoctor --require asciidoctor-katex-2 test.adoc
+xdg-open katex.html
+....
+
+Remember that Node.js is very picky, and KaTeX gets installed in a `./node_modules/` directory, which must be in the current directory!
+
+If you get a `katex` not found error, make sure that the following works:
+
+....
+node -e 'require("katex")'
+....
+
+Trying to install with `npm install --global` does not help either: https://stackoverflow.com/questions/15636367/nodejs-require-a-global-module-package
+
+Use this extension directly from this repo for development purposes instead:
+
+....
+asciidoctor --require "$(pwd)/lib/asciidoctor-katex-2.rb" test.adoc
+....
+
+Install this gem locally to ensure that the packaging is correct:
+
+....
+gem build asciidoctor-katex-2
+gem install asciidoctor-katex-2
+....
+
+To publish a new version of this gem, first edit the `s.version` entry on link:asciidoctor-katex-2.gemspec[] and then:
+
+....
+version=0.0.0
+git tag --message "$version" "$version"
+git push --follow-tags
+gem build asciidoctor-katex-2
+gem push "asciidoctor-katex-2-${version}.gem"
+....
+
+== Alternatives
+
+Why this is better than:
+
+* MathJax (built-in to Asciidoctor 2.0.10 in `latexmath` blocks):
+** reflows the page several times, seconds after initial load, which is terrible if you link into a `#some-header` location of the page
+** not sure can be done server-side, which increases render speed even further and dispenses JavaScript on the browser
+* https://github.com/jirutka/asciidoctor-katex extension at commit 30b037dfe369cec280f07aa2ee5ae365cf1a253c:
+** document render time is too slow because of https://github.com/rails/execjs[execjs] or the way it was integrated. Benchmark at: https://github.com/asciidoctor/asciidoctor/pull/3338#issuecomment-502045350
+** you need to manually include docinfo
+* AsciiMath: not LaTeX syntax, so larger learning curve and less functionality
+* https://github.com/asciidoctor/asciidoctor-mathematical uses https://github.com/gjtorikian/mathematical which converts equations into "SVGs, PNGs, or MathML", so either clunky images that have to be uploaded, or MathML which has low support. KaTeX uses just plain HTML and CSS!
+
+== TODO
+
+Things already work, but there are two major annoyances that need solving before True Enlightenment:
+
+* make KaTeX `\newcommand` work across math blocks, only `\def` works across blocks on KaTeX 0.10.2, upstream issue: https://github.com/KaTeX/KaTeX/issues/2070
+* Equation `#num` prefix to caption descriptions which works on xrefs. Upstream issue: https://github.com/asciidoctor/asciidoctor/issues/3378
+
+Less pressing issues:
+
+* ensure that it works with `pdflatex` as well
+* use `[stem]` blocks for the Math so that unmodified Asciidoctor documents will just work
+
+== Bibliography
+
+* https://github.com/asciidoctor/asciidoctor/pull/3338
