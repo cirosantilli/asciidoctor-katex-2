@@ -5,6 +5,6 @@ Gem::Specification.new do |s|
   s.homepage    = 'https://github.com/cirosantilli/asciidoctor-katex-2'
   s.license     = 'MIT'
   s.name        = 'asciidoctor-katex-2'
-  s.summary     = "Asciidoctor extension to render Katex mathematics server side to HTML fast with Schmooze"
+  s.summary     = "Asciidoctor extension to render Katex Mathematics server side to HTML fast with Schmooze. The Nirvana of Math for the web."
   s.version     = '0.0.1'
 end
