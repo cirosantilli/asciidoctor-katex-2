@@ -10,7 +10,7 @@
 :toc: macro
 :toclevels: 6
 
-Asciidoctor extension to render KaTeX mathematics server side to HTML fast with https://github.com/Shopify/schmooze[Schmooze]. The Nirvana of Math for the web.
+Asciidoctor extension to render KaTeX mathematics server side to HTML xref:performance-test[fast] with https://github.com/Shopify/schmooze[Schmooze]. The Nirvana of Math for the web.
 
 toc::[]
 
@@ -103,6 +103,22 @@ Less pressing issues:
 
 * ensure that it works with `pdflatex` as well
 * use `[stem]` blocks for the Math so that unmodified Asciidoctor documents will just work
+
+== Performance test
+
+Compile three documents with similar sizes:
+
+* one with KaTeX math
+* the other without mathsx
+* the other with MathJax
+
+to compare the effect of the math, and load them in the browser in a header in a header the middle of the file to see how fast they load:
+
+....
+./test-perf.sh
+....
+
+With KaTeX it takes about 4x longer to compile than the others, and the output HTML is 10x larger, but the math renders faster.
 
 == Bibliography
 
