@@ -64,6 +64,11 @@ gem build asciidoctor-katex-2
 gem push "asciidoctor-katex-2-${version}.gem"
 ....
 
+== Document attributes
+
+* `katex-font-size`: default: `1.5em`. Control the Math font size relative to the regular text, the default was too small: https://stackoverflow.com/questions/50896041/katex-font-size/57355836#57355836
+* `katex-version`: default: `0.10.2`. Which version of the KaTeX CSS to use. Should match the KaTeX package executable you installed with NPM
+
 == Alternatives
 
 Why this is better than:
@@ -92,7 +97,7 @@ Join the revolution.
 Things already work, but there are two major annoyances that need solving before True Enlightenment:
 
 * make KaTeX `\newcommand` work across math blocks, only `\def` works across blocks on KaTeX 0.10.2, upstream issue: https://github.com/KaTeX/KaTeX/issues/2070
-* Equation `#num` prefix to caption descriptions which works on xrefs. Upstream issue: https://github.com/asciidoctor/asciidoctor/issues/3378
+* Equation `#num` prefix to caption descriptions which works on xrefs. Upstream issue: https://github.com/asciidoctor/asciidoctor/issues/3378 Note that this is however also a limitation of the default `:stem:` math in Asciidoctor 2.0.10 core as well: https://github.com/asciidoctor/asciidoctor/issues/3354
 
 Less pressing issues:
 
