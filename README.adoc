@@ -102,7 +102,7 @@ Things already work, but there are two major annoyances that need solving before
 Less pressing issues:
 
 * ensure that it works with `pdflatex` as well
-* use `[stem]` blocks for the Math so that unmodified Asciidoctor documents will just work
+* use `[stem]` or `[latexmath]` blocks for the Math so that unmodified Asciidoctor documents will just work. This is currently very messy: https://github.com/asciidoctor/asciidoctor/issues/3385 A Treepreprocessor is needed for blocks, but I don't know how to get the inline one working.
 
 == Performance test
 

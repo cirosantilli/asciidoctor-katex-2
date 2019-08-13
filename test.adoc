@@ -1,5 +1,8 @@
+= asciidoctor-katex-2 test
 :katex-font-size: 1.5em
 :katex-version: 0.10.2
+
+== Basic usage
 
 Inline katex:[\sqrt{1+1}] katex
 
@@ -16,6 +19,8 @@ Block multi-liner with a caption and xref to it: xref:math-test-math[] (TODO add
 \sqrt{1+1} \\
 \sqrt{1+1}
 ....
+
+== Define new commands
 
 Define and use `\gdef` in another block:
 
@@ -49,3 +54,18 @@ Macro defined with JavaScript API:
 ....
 \cirosantilliApiMacro{asdf}{qwer}
 ....
+
+== Use latexmath as the identifier
+
+TODO: inline latexmath:[\sqrt{2 + 2}] latexmath
+
+Block macro:
+
+latexmath::[\sqrt{2 + 2}]
+
+Block:
+
+[latexmath]
+++++
+\sqrt{2 + 2}
+++++
