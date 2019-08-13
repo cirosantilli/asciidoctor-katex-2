@@ -75,12 +75,12 @@ Why this is better than:
 
 * MathJax (built-in to Asciidoctor 2.0.10 in `latexmath` blocks):
 ** reflows the page several times, seconds after initial load, which is terrible if you link into a `#some-header` location of the page
-** not sure can be done server-side, which increases render speed even further and dispenses JavaScript on the browser
+** not sure can be done server-side, which increases render speed even further and dispenses JavaScript on the browser. The fact that wikimedia uses ugly PhantomJS to SVG hacks for that indicates no: https://github.com/wikimedia/mathoid It even has an extension at: https://github.com/asciidoctor/asciidoctor-extensions-lab/tree/99353d66d9237775e10185787ed969d1a922d6ea/lib/mathoid-treeprocessor
 * https://github.com/jirutka/asciidoctor-katex extension at commit 30b037dfe369cec280f07aa2ee5ae365cf1a253c:
 ** document render time is too slow because of https://github.com/rails/execjs[execjs] or the way it was integrated. Benchmark at: https://github.com/asciidoctor/asciidoctor/pull/3338#issuecomment-502045350
 ** you need to manually include docinfo
 * AsciiMath: not LaTeX syntax, so larger learning curve and less functionality
-* https://github.com/asciidoctor/asciidoctor-mathematical uses https://github.com/gjtorikian/mathematical which converts equations into "SVGs, PNGs, or MathML", so either clunky images that have to be uploaded, or MathML which has low support. KaTeX uses just plain HTML and CSS!
+* https://github.com/asciidoctor/asciidoctor-mathematical uses https://github.com/gjtorikian/mathematical which converts equations into "SVGs, PNGs, or MathML", so either clunky images that have to be uploaded, or MathML which has low support. KaTeX uses just plain HTML and CSS! Extension at: https://github.com/asciidoctor/asciidoctor-extensions-lab/tree/99353d66d9237775e10185787ed969d1a922d6ea/lib/mathematical-treeprocessor
 
 == Why?
 
