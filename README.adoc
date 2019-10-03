@@ -96,8 +96,8 @@ Join the revolution.
 
 Things already work, but there are two major annoyances that need solving before True Enlightenment:
 
-* make KaTeX `\newcommand` work across math blocks, only `\def` works across blocks on KaTeX 0.10.2, upstream issue: https://github.com/KaTeX/KaTeX/issues/2070
-* Equation `#num` prefix to caption descriptions which works on xrefs. Upstream issue: https://github.com/asciidoctor/asciidoctor/issues/3378 Note that this is however also a limitation of the default `:stem:` math in Asciidoctor 2.0.10 core as well: https://github.com/asciidoctor/asciidoctor/issues/3354
+* make KaTeX `\newcommand` work across math blocks, only `\def` works across blocks on KaTeX 0.10.2, upstream issue: https://github.com/KaTeX/KaTeX/issues/2070[]. Fix merged at: https://github.com/KaTeX/KaTeX/pull/2091 and just waiting for a tag to update KaTeX to.
+* Equation `#num` prefix to caption descriptions which works on xrefs. Does not seem possible from extensions: https://github.com/asciidoctor/asciidoctor/issues/3378[]? Note that this is however also a limitation of the default `:stem:` math in Asciidoctor 2.0.10 core as well: https://github.com/asciidoctor/asciidoctor/issues/3354[]. Upstream fix for the built-in stem at: https://github.com/asciidoctor/asciidoctor/pull/3420[].
 
 Less pressing issues:
 

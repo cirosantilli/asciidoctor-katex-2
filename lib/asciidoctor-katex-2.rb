@@ -37,6 +37,10 @@ end
 $katex = KatexSchmoozer.new('.')
 $katex.init
 
+# [katex]
+# ++++
+# \sqrt{1+1}
+# ++++
 class KatexBlockProcessor < Asciidoctor::Extensions::BlockProcessor
   use_dsl
   named :katex
@@ -48,6 +52,7 @@ class KatexBlockProcessor < Asciidoctor::Extensions::BlockProcessor
   end
 end
 
+# katex:[\sqrt{1+1}]
 class KatexBlockMacroProcessor < Asciidoctor::Extensions::BlockMacroProcessor
   use_dsl
   named :katex
@@ -57,6 +62,7 @@ class KatexBlockMacroProcessor < Asciidoctor::Extensions::BlockMacroProcessor
   end
 end
 
+# latexmath:[\sqrt{1+1}]
 class KatexLatexmathBlockMacroProcessor < Asciidoctor::Extensions::BlockMacroProcessor
   use_dsl
   named :latexmath
@@ -66,9 +72,11 @@ class KatexLatexmathBlockMacroProcessor < Asciidoctor::Extensions::BlockMacroPro
   end
 end
 
+# katex:[\sqrt{1+1}]
 class KatexInlineMacroProcessor < Asciidoctor::Extensions::InlineMacroProcessor
   use_dsl
   named :katex
+  # No target is allowed.
   using_format :short
   def process parent, target, attrs
     html = $katex.renderToString(attrs[1])
@@ -76,6 +84,7 @@ class KatexInlineMacroProcessor < Asciidoctor::Extensions::InlineMacroProcessor
   end
 end
 
+# Add CSS to header.
 class KatexDocinfoProcessor < Asciidoctor::Extensions::DocinfoProcessor
   use_dsl
   def process doc
@@ -91,6 +100,7 @@ class KatexDocinfoProcessor < Asciidoctor::Extensions::DocinfoProcessor
   end
 end
 
+# TODO WIP to make latexmath: be used.
 class KatexTreeprocessor < Asciidoctor::Extensions::Treeprocessor
   def process document
     unless (stem_blocks = document.find_by context: :stem).nil_or_empty?
